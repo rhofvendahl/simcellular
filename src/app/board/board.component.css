@@ -1,0 +1,48 @@
+#board {
+  margin: auto;
+}
+
+#library {
+}
+
+.shape {
+  margin: 10px;
+  display: inline-block;
+  border: 1px solid grey;
+}
+
+.button {
+ margin-left: 50%;
+}
+
+#stateButton, #nextButton {
+  margin-left: -40px;
+  width: 80px;
+  height: 25px;
+}
+
+.cell {
+  width: 30px;
+  height: 30px;
+}
+
+.shapeCell {
+  width: 20px;
+  height: 20px;
+}
+
+.white {
+  background-color: whitesmoke;
+}
+
+.black {
+  background-color: black;
+}
+
+.grey {
+  background-color: lightgrey;
+}
+
+.selected {
+  border: 1px solid black;
+}

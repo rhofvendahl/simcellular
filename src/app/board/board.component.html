@@ -1,0 +1,25 @@
+<table id="board">
+  <tr *ngFor="let currentRow of game.board">
+    <td [class]="cellClass(currentCell)" *ngFor="let currentCell of currentRow" (click)="clickCell(currentCell)">
+    </td>
+  </tr>
+</table>
+
+<br>
+<div class="button">
+  <button id="stateButton" (click)="togglePlay()">{{togglePlayButton()}}</button>
+</div>
+<div class="button">
+  <button id="nextButton" (click)="nextState()">Next</button>
+</div>
+
+<div id="library">
+  <div class="shape" *ngFor="let currentShape of library.shapes" (click)="clickShape(currentShape)">
+    <table>
+      <tr *ngFor="let currentRow of currentShape">
+        <td [class]="shapeCellClass(currentCell)" *ngFor="let currentCell of currentRow">
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>
