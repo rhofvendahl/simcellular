@@ -13,32 +13,26 @@ export class Game {
     }
   }
 
-  placeShape(insertCell, shape) {
-    for (let i = 0; i < shape.length; i++) {
-      for (let j = 0; j < shape[0].length; j++) {
-        this.board[i + insertCell.row][j + insertCell.column].state = shape[i][j];
+  placeShape(insertCell: number, shape: boolean[][]) {
+    for (let row = 0; row < shape.length; row++) {
+      for (let col = 0; col < shape[0].length; col++) {
+        this.board[row + insertCell.row][row + insertCell.column].state = shape[row][col];
       }
     }
   }
 
-  toRow(maybeRow) {
-    return (maybeRow + this.board.length) % this.board.length;
+  inRangeCell(row: number, col: number) {
+    let inRangeRow: number = (row + this.board.length) % this.board.length;
+    let inRangeCol: number = (col + this.board[0].length) % this.board[0].length;
+    return this.board[inRangeRow][inRangeCol];
   }
 
-  toCol(maybeCol) {
-    return (maybeCol + this.board[0].length) % this.board[0].length;
-  }
-
-  tallyNeighbors(cellRow, cellCol) {
+  tallyNeighbors(cellRow: number, cellCol: number) {
     let neighborTally: number = 0;
-    //going through rows
-    for (let i = cellRow-1; i <= cellRow+1; i++) {
-      //going through column entries for a given row
-      for (let j = cellCol-1; j <= cellCol+1; j++) {
-        let inRangeCell: Cell = this.board[this.toRow(i)][this.toCol(j)];
-        // console.log(cellRow, cellCol, this.toRow(i), this.toCol(j));
+    for (let row = cellRow-1; row <= cellRow+1; row++) {
+      for (let col = cellCol-1; col <= cellCol+1; col++) {
+        let inRangeCell: Cell = this.inRangeCell(row, col);
         if (inRangeCell.state) neighborTally++;
-
       }
     }
     if (this.board[cellRow][cellCol].state) neighborTally--;
@@ -46,12 +40,10 @@ export class Game {
   }
 
   findNextState() {
-    //going through rows
-    for (let i = 0; i < this.board.length; i++) {
-      //going through column entries for a given row
-      for (let j = 0; j < this.board[0].length; j++) {
-        let cell = this.board[i][j];
-        let tally = this.tallyNeighbors(i, j);
+    for (let row = 0; row < this.board.length; row++) {
+      for (let col = 0; col < this.board[0].length; col++) {
+        let cell = this.board[row][col];
+        let tally = this.tallyNeighbors(row, col);
         if (cell.state) {
           let shouldSurvive: boolean = (tally == 2 || tally == 3)
           cell.nextState = shouldSurvive;
@@ -64,11 +56,9 @@ export class Game {
   }
 
   renderNextState() {
-    //going through rows
-    for (let i = 0; i < this.board.length; i++) {
-      //going through column entries for a given row
-      for (let j = 0; j < this.board[0].length; j++) {
-        let cell = this.board[i][j];
+    for (let row = 0; row < this.board.length; row++) {
+      for (let col = 0; col < this.board[0].length; col++) {
+        let cell = this.board[row][col];
         cell.state = cell.nextState;
       }
     }
