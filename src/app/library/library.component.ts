@@ -17,6 +17,6 @@ export class LibraryComponent implements OnInit {
     // debugger;
     this.shapes = this.shapesService.getShapes();
     console.log(this.shapes);
-    debugger;
+    // debugger;
   }
 }

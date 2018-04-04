@@ -7,7 +7,7 @@ export class ShapesService {
 
   constructor(private database: AngularFireDatabase) {
     this.shapes = database.list('shapes');
-    debugger;
+    // debugger;
   }
 
   getShapes() {

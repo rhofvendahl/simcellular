@@ -1,5 +1,6 @@
 #board {
-  margin: auto;
+  width: 100%;
+  height: 100%;
 }
 
 #library {
@@ -22,8 +23,8 @@
 }
 
 .cell {
-  width: 30px;
-  height: 30px;
+  /*width: 30px;
+  height: 30px;*/
 }
 
 .shapeCell {
