@@ -13,7 +13,7 @@ export class Game {
     }
   }
 
-  placeShape(insertCell: number, shape: boolean[][]) {
+  placeShape(insertCell: Cell, shape: boolean[][]) {
     for (let row = 0; row < shape.length; row++) {
       for (let col = 0; col < shape[0].length; col++) {
         this.board[row + insertCell.row][row + insertCell.column].state = shape[row][col];
