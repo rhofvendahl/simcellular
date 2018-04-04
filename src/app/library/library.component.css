@@ -1,9 +1,12 @@
 .shape {
-  border: 1px solid grey;
   margin: 10px;
   border-spacing: 0px;
   width: 80px;
   height: 80px;
+}
+
+.selected {
+  border: 1px solid grey;
 }
 .cell {
   width: 100%;

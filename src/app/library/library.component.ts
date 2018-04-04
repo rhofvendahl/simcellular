@@ -10,6 +10,7 @@ import { FirebaseListObservable } from 'angularfire2/database';
 })
 export class LibraryComponent implements OnInit {
   shapes: FirebaseListObservable<any[]>;
+  selectedShape: null;
 
   constructor(private shapesService: ShapesService) { }
 
@@ -18,5 +19,14 @@ export class LibraryComponent implements OnInit {
     this.shapes = this.shapesService.getShapes();
     console.log(this.shapes);
     // debugger;
+  }
+
+  shapeClass(shape) {
+    if (shape == this.selectedShape) return "shape selected";
+    return "shape";
+  }
+
+  selectShape(shape) {
+    this.selectedShape = shape
   }
 }
