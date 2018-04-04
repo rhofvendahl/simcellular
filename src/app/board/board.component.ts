@@ -2,19 +2,23 @@ import { Component, OnInit } from '@angular/core';
 import { Cell } from '../models/cell'
 import { Game } from '../models/game'
 import { Library } from '../models/library'
+import { ShapesService } from '../shapes.service';
+import { FirebaseListObservable } from 'angularfire2/database';
 
 @Component({
   selector: 'app-board',
   templateUrl: './board.component.html',
   styleUrls: ['./board.component.css']
+  providers: [ShapesService]
 })
-export class BoardComponent implements OnInit {
 
+export class BoardComponent implements OnInit {
   game: Game;
   playState: boolean;
   animationInterval;
   shapeSelected: boolean[][];
   library: Library;
+  
   constructor() {
     this.playState = false;
     this.game = new Game(20, 20);

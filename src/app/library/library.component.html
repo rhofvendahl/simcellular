@@ -1,3 +1,4 @@
+
 <table (click)="selectShape(shape)" [class]="shapeClass(shape)" *ngFor="let shape of shapes | async">
   <tr *ngFor="let row of shape">
     <td *ngFor="let cell of row">
