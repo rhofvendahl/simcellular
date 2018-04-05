@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Cell } from '../models/cell'
 import { Game } from '../models/game'
 import { Library } from '../models/library'
@@ -8,18 +8,18 @@ import { FirebaseListObservable } from 'angularfire2/database';
 @Component({
   selector: 'app-board',
   templateUrl: './board.component.html',
-  styleUrls: ['./board.component.css']
+  styleUrls: ['./board.component.css'],
   providers: [ShapesService]
 })
 
 export class BoardComponent implements OnInit {
+  @Input() selectedShape: boolean[][];
+
   game: Game;
   playState: boolean;
   animationInterval;
-  shapeSelected: boolean[][];
-  library: Library;
-  
-  constructor() {
+
+  constructor(private shapesService: ShapesService) {
     this.playState = false;
     this.game = new Game(20, 20);
     this.shapeSelected = [];
@@ -27,6 +27,7 @@ export class BoardComponent implements OnInit {
   }
 
   ngOnInit() {
+    console.log(this.shapesService.getShapeByKey(0));
   }
 
   cellClass(currentCell) {
@@ -37,23 +38,8 @@ export class BoardComponent implements OnInit {
     }
   }
 
-  shapeCellClass(currentCell) {
-    if (currentCell) return "shapeCell grey";
-    else return "shapeCell white"
-  }
-
-  clickCell(currentCell) {
-    if (this.shapeSelected.length > 0) {
-      //place shape
-      this.game.placeShape(currentCell, this.shapeSelected);
-    } else {
-      //flip single cell
-      currentCell.state = !currentCell.state;
-    }
-  }
-
-  clickShape(currentShape) {
-    this.shapeSelected = currentShape;
+  clickCell(cell) {
+    this.game.placeShape(cell, this.selectedShape);
   }
 
   togglePlay() {

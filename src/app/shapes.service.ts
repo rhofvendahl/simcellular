@@ -7,10 +7,12 @@ export class ShapesService {
 
   constructor(private database: AngularFireDatabase) {
     this.shapes = database.list('shapes');
-    // debugger;
   }
 
   getShapes() {
     return this.shapes;
+  }
+  getShapeByKey(key: number) {
+    return this.database.object('shapes/' + key);
   }
 }

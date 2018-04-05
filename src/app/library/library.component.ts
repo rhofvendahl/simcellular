@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { ShapesService } from '../shapes.service';
 import { FirebaseListObservable } from 'angularfire2/database';
 
@@ -9,6 +9,8 @@ import { FirebaseListObservable } from 'angularfire2/database';
   providers: [ShapesService]
 })
 export class LibraryComponent implements OnInit {
+  @Output() shapeSender = new EventEmitter();
+
   shapes: FirebaseListObservable<any[]>;
   selectedShapeKey: number = 0;
 
@@ -17,6 +19,8 @@ export class LibraryComponent implements OnInit {
   ngOnInit() {
     // debugger;
     this.shapes = this.shapesService.getShapes();
+    // this.shapeSender.emit(this.shapesService.getShapeByKey(0));
+
   }
 
   shapeClass(shape) {
@@ -26,6 +30,6 @@ export class LibraryComponent implements OnInit {
 
   selectShape(shape) {
     this.selectedShapeKey = shape.$key
-    console.log(shape.$key);
+    this.shapeSender.emit(shape);
   }
 }
