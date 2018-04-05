@@ -53,18 +53,18 @@ export class Game {
     for (let row = 0; row < this.board.length; row++) {
       for (let col = 0; col < this.board[0].length; col++) {
         let cell: Cell = this.board[row][col];
-        // debugger;
         let liveNeighbors: Cell[] = cell.neighbors.filter(cell => cell.state);
         let tally: number = liveNeighbors.length;
-        //retrieves color in debugger
+
+        let shouldSurvive: boolean = (tally == 2 || tally == 3);
+        let shouldGenerate: boolean = (tally == 3)
+
         if (cell.state) {
-          let shouldSurvive: boolean = (tally == 2 || tally == 3)
           cell.nextState = shouldSurvive;
-        } else {
-          let shouldGenerate: boolean = (tally == 3)
-          cell.nextState = shouldGenerate;
-          // let color: string = liveNeighbors[Math.floor(Math.random()*liveNeighbors.length)].color;
-          // cell.color = color;
+        } else if (shouldGenerate) {
+          cell.nextState = true;
+          let color: string = liveNeighbors[Math.floor(Math.random()*liveNeighbors.length)].color;
+          cell.color = color;
         }
       }
     }
