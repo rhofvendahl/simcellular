@@ -7,9 +7,14 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   //chagne if I figure out how to unwrap single object
-  selectedShape: boolean[][] = [[true]];
+  selectedShapeParent: boolean[][] = [[true]];
+  selectedColorParent: string = "#00bfff";
   shapeReciever($event) {
     //try retreiving property of event
-    this.selectedShape = $event;
+    this.selectedShapeParent = $event;
+  }
+  colorReciever($event) {
+    this.selectedColorParent = $event;
+    console.log("color recieved", this.selectedColorParent)
   }
 }

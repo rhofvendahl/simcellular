@@ -6,8 +6,8 @@
   </h1>
 </div> -->
 <div id="board">
-  <app-board [selectedShape]="selectedShape"></app-board>
+  <app-board [selectedShape]="selectedShapeParent" [selectedColor]="selectedColorParent"></app-board>
   <div id="library">
-    <app-library (shapeSender)="shapeReciever($event)"></app-library>
+    <app-library (shapeSender)="shapeReciever($event)" (colorSender)="colorReciever($event)"></app-library>
   </div>
 </div>

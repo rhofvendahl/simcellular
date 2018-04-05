@@ -1,6 +1,6 @@
 <table id="board">
-  <tr *ngFor="let currentRow of game.board">
-    <td [class]="cellClass(currentCell)" *ngFor="let currentCell of currentRow" (click)="clickCell(currentCell)">
+  <tr *ngFor="let row of game.board">
+    <td *ngFor="let cell of row" class="cell" [ngStyle]="cellStyle(cell)" (click)="clickCell(cell)">
     </td>
   </tr>
 </table>
@@ -12,14 +12,3 @@
 <div class="button">
   <button id="nextButton" (click)="nextState()">Next</button>
 </div>
-
-<!-- <div id="library">
-  <div class="shape" *ngFor="let currentShape of library.shapes" (click)="clickShape(currentShape)">
-    <table>
-      <tr *ngFor="let currentRow of currentShape">
-        <td [class]="shapeCellClass(currentCell)" *ngFor="let currentCell of currentRow">
-        </td>
-      </tr>
-    </table>
-  </div>
-</div> -->

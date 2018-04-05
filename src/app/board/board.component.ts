@@ -14,6 +14,7 @@ import { FirebaseListObservable } from 'angularfire2/database';
 
 export class BoardComponent implements OnInit {
   @Input() selectedShape: boolean[][];
+  @Input() selectedColor: string;
 
   game: Game;
   playState: boolean;
@@ -30,12 +31,19 @@ export class BoardComponent implements OnInit {
     console.log(this.shapesService.getShapeByKey(0));
   }
 
-  cellClass(currentCell) {
-    if (currentCell.state) {
+  cellClass(cell) {
+    if (cell.state) {
       return "cell black";
     } else {
       return "cell white"
     }
+  }
+
+  cellStyle(cell) {
+    let color: string;
+    if (cell.state) color = this.selectedColor;
+    else color = "#eeeeee";
+    return {"background-color": color};
   }
 
   clickCell(cell) {

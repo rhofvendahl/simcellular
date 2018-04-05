@@ -1,8 +1,8 @@
-.shape {
+table {
   margin: 10px;
   border-spacing: 0px;
-  width: 75px;
-  height: 75px;
+  width: 65px;
+  height: 65px;
 }
 
 .selected {
@@ -13,16 +13,8 @@
   height: 100%;
 }
 
-.white {
+.dead {
   background-color: whitesmoke;
-}
-
-.black {
-  background-color: black;
-}
-
-.grey {
-  background-color: lightgrey;
 }
 
 .selected {

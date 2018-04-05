@@ -2,7 +2,20 @@
 <table (click)="selectShape(shape)" [class]="shapeClass(shape)" *ngFor="let shape of shapes | async">
   <tr *ngFor="let row of shape">
     <td *ngFor="let cell of row">
-      <div class="cell grey" *ngIf="cell"></div><div class="cell white" *ngIf="!cell"></div>
+      <div class="cell" [ngStyle]="cellStyle()" *ngIf="cell"></div><div class="cell dead" *ngIf="!cell"></div>
     </td>
+  </tr>
+</table>
+
+<table>
+  <tr>
+    <!-- green blue -->
+    <td><div class="cell" (click)="selectColor('#32cd32')" [ngStyle]="{'background-color':'#32cd32'}"></div></td>
+    <td><div class="cell" (click)="selectColor('#00bfff')" [ngStyle]="{'background-color':'#00bfff'}"></div></td>
+  </tr>
+  <tr>
+    <!-- red grey -->
+    <td><div class="cell" (click)="selectColor('#ff6347')" [ngStyle]="{'background-color':'#ff6347'}"></div></td>
+    <td><div class="cell" (click)="selectColor('#777777')" [ngStyle]="{'background-color':'#777777'}"></div></td>
   </tr>
 </table>
