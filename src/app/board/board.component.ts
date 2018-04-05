@@ -41,7 +41,7 @@ export class BoardComponent implements OnInit {
 
   cellStyle(cell) {
     let color: string;
-    if (cell.state) color = this.selectedColor;
+    if (cell.state) color = cell.color;
     else color = "#eeeeee";
     return {"background-color": color};
   }
@@ -51,7 +51,7 @@ export class BoardComponent implements OnInit {
     // console.log(this.selectedShape.length + this.selectedShape[0].length);
     // console.log(this.selectedShape)
     if (this.selectedShape.length == 1) cell.state = !cell.state;
-    else this.game.placeShape(cell, this.selectedShape);
+    else this.game.placeShape(cell, this.selectedShape, this.selectedColor);
     //debugger finds pattern bad here
   }
 

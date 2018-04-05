@@ -6,7 +6,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  //chagne if I figure out how to unwrap single object
+  //change if I figure out how to unwrap single object
   selectedShapeParent: boolean[][] = [[true]];
   selectedColorParent: string = "#00bfff";
   shapeReciever($event) {

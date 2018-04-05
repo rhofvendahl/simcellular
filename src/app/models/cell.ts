@@ -1,11 +1,9 @@
 export class Cell {
-  state: boolean;
+  state: boolean = false;
   nextState: boolean;
   row: number;
   column: number;
-  constructor(row, column) {
-    this.state = false;
-    this.row = row;
-    this.column = column;
+  color: string;
+  constructor(public row: number, public column: number) {
   }
 }

@@ -13,10 +13,12 @@ export class Game {
     }
   }
 
-  placeShape(insertCell: Cell, shape: boolean[][]) {
+  placeShape(insertCell: Cell, shape: boolean[][], color: string) {
     for (let shapeRow = 0; shapeRow < shape.length; shapeRow++) {
       for (let shapeCol = 0; shapeCol < shape[0].length; shapeCol++) {
-        this.inRangeCell(shapeRow + insertCell.row, shapeCol + insertCell.column).state = shape[shapeRow][shapeCol];
+        let cell = this.inRangeCell(shapeRow + insertCell.row, shapeCol + insertCell.column)
+        cell.state = shape[shapeRow][shapeCol];
+        cell.color = color;
       }
     }
   }
@@ -38,7 +40,17 @@ export class Game {
     if (this.board[cellRow][cellCol].state) neighborTally--;
     return neighborTally;
   }
-
+  // getNeighbors(cellRow: number, cellCol: number) {
+  //   let neighbors: Cell[] = [];
+  //   for (let row = cellRow-1; row <= cellRow+1; row++) {
+  //     for (let col = cellCol-1; col <= cellCol+1; col++) {
+  //       let inRangeCell: Cell = this.inRangeCell(row, col);
+  //       if (inRangeCell.state) neighbors.push(inRangeCell);
+  //     }
+  //   }
+  //   if (this.board[cellRow][cellCol].state) neighborTally--;
+  //   return neighborTally;
+  // }
   findNextState() {
     for (let row = 0; row < this.board.length; row++) {
       for (let col = 0; col < this.board[0].length; col++) {
