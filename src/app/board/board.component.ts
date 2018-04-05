@@ -39,7 +39,12 @@ export class BoardComponent implements OnInit {
   }
 
   clickCell(cell) {
-    this.game.placeShape(cell, this.selectedShape);
+    // console.log(cell.row, cell.column);
+    // console.log(this.selectedShape.length + this.selectedShape[0].length);
+    // console.log(this.selectedShape)
+    if (this.selectedShape.length == 1) cell.state = !cell.state;
+    else this.game.placeShape(cell, this.selectedShape);
+    //debugger finds pattern bad here
   }
 
   togglePlay() {
@@ -58,7 +63,6 @@ export class BoardComponent implements OnInit {
       return "Play";
     }
   }
-
 
   nextState() {
     this.game.findNextState();

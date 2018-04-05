@@ -14,9 +14,9 @@ export class Game {
   }
 
   placeShape(insertCell: Cell, shape: boolean[][]) {
-    for (let row = 0; row < shape.length; row++) {
-      for (let col = 0; col < shape[0].length; col++) {
-        this.board[row + insertCell.row][row + insertCell.column].state = shape[row][col];
+    for (let shapeRow = 0; shapeRow < shape.length; shapeRow++) {
+      for (let shapeCol = 0; shapeCol < shape[0].length; shapeCol++) {
+        this.inRangeCell(shapeRow + insertCell.row, shapeCol + insertCell.column).state = shape[shapeRow][shapeCol];
       }
     }
   }
