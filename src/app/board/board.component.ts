@@ -47,18 +47,17 @@ export class BoardComponent implements OnInit {
   }
 
   clickCell(cell) {
-    // console.log(cell.row, cell.column);
-    // console.log(this.selectedShape.length + this.selectedShape[0].length);
-    // console.log(this.selectedShape)
-    if (this.selectedShape.length == 1) cell.state = !cell.state;
-    else this.game.placeShape(cell, this.selectedShape, this.selectedColor);
-    //debugger finds pattern bad here
+    if (this.selectedShape.length == 1 && cell.state) {
+      cell.state = false;
+    } else {
+      this.game.placeShape(cell, this.selectedShape, this.selectedColor);
+    }
   }
 
   togglePlay() {
     this.playState = !this.playState;
     if (this.playState) {
-      this.animationInterval = setInterval(() => {this.nextState()}, 50);
+      this.animationInterval = setInterval(() => {this.game.updateBoard()}, 50);
     } else {
       clearInterval(this.animationInterval);
     }
@@ -73,7 +72,7 @@ export class BoardComponent implements OnInit {
   }
 
   nextState() {
-    this.game.findNextState();
-    this.game.renderNextState();
+    this.game.updateBoard();
+    // this.game.renderNextState();
   }
 }
