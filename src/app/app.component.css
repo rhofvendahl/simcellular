@@ -15,11 +15,13 @@
   position: relative;
   float: right;
   color: grey;
-  font-size: 50px;
-  bottom: 65px;
+  font-size: 60px;
+  bottom: 75px;
+  font-family: 'Open Sans Condensed', sans-serif;
 }
 #about {
   color: grey;
-  font-size: 40px;
-  margin-top: -10px;
+  font-size: 50px;
+  margin-top: -20px;
+  font-family: 'Open Sans Condensed', sans-serif;
 }

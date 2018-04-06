@@ -62,8 +62,6 @@ export class Game {
     let blueHexAverage: string = (Math.ceil(blueDecimalSum / 3)).toString(16);
 
     let color: string = "#" + this.pad(redHexAverage) + this.pad(greenHexAverage) + this.pad(blueHexAverage);
-    // debugger
-    console.log(cells[0].color, cells[1].color, cells[2].color, redHexAverage, greenHexAverage, blueHexAverage)
     return color;
   }
 
