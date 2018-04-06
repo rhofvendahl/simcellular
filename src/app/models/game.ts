@@ -38,27 +38,33 @@ export class Game {
     return neighbors;
   }
 
+  pad(hexNumber: string) {
+    if (hexNumber.length == 1) return "0" + hexNumber;
+    return hexNumber;
+  }
+
   averageColor(cells: Cell[]) {
     let redDecimalSum: number = 0;
     let greenDecimalSum: number = 0;
     let blueDecimalSum: number = 0;
 
     cells.forEach(function(cell) {
-      debugger
       let redHex: string = cell.color.substr(1, 2);
       redDecimalSum += parseInt(redHex, 16);
       let greenHex: string = cell.color.substr(3, 2);
-      redDecimalSum += parseInt(greenHex, 16);
+      greenDecimalSum += parseInt(greenHex, 16);
       let blueHex: string = cell.color.substr(5, 2);
-      redDecimalSum += parseInt(blueHex, 16);
+      blueDecimalSum += parseInt(blueHex, 16);
     });
 
-    let redHexAverage: string = (redDecimalSum / 3).toString(16);
-    let greenHexAverage: string = (redDecimalSum / 3).toString(16);
-    let blueHexAverage: string = (redDecimalSum / 3).toString(16);
+    let redHexAverage: string = (Math.ceil(redDecimalSum / 3)).toString(16);
+    let greenHexAverage: string = (Math.ceil(greenDecimalSum / 3)).toString(16);
+    let blueHexAverage: string = (Math.ceil(blueDecimalSum / 3)).toString(16);
 
+    let color: string = "#" + this.pad(redHexAverage) + this.pad(greenHexAverage) + this.pad(blueHexAverage);
+    // debugger
     console.log(cells[0].color, cells[1].color, cells[2].color, redHexAverage, greenHexAverage, blueHexAverage)
-    return "#" + redHexAverage + greenHexAverage + blueHexAverage;
+    return color;
   }
 
   updateBoard() {

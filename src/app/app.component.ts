@@ -15,6 +15,5 @@ export class AppComponent {
   }
   colorReciever($event) {
     this.selectedColorParent = $event;
-    console.log("color recieved", this.selectedColorParent)
   }
 }
