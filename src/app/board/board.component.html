@@ -1,9 +1,11 @@
-<table id="board">
-  <tr *ngFor="let row of game.board">
-    <td *ngFor="let cell of row" class="cell" [ngStyle]="cellStyle(cell)" (click)="clickCell(cell)">
-    </td>
-  </tr>
-</table>
+<div id="board">
+  <table>
+    <tr *ngFor="let row of game.board">
+      <td *ngFor="let cell of row" class="cell" [ngStyle]="cellStyle(cell)" (click)="clickCell(cell)">
+      </td>
+    </tr>
+  </table>
+</div>
 
 <br>
 <div class="button">
