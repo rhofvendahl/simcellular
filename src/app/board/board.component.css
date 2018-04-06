@@ -22,18 +22,8 @@
   height: 25px;
 }
 
-.cell {
-  /*width: 30px;
-  height: 30px;*/
-}
-
-.shapeCell {
-  width: 20px;
-  height: 20px;
-}
-
-.white {
-  background-color: whitesmoke;
+.dead {
+  background-color: #f7f7f7;
 }
 
 .black {
@@ -42,10 +32,6 @@
 
 .grey {
   background-color: lightgrey;
-}
-
-.selected {
-  border: 1px solid black;
 }
 
 #controls {

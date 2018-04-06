@@ -1,11 +1,13 @@
 
-<table (click)="selectShape(shape)" [class]="shapeClass(shape)" *ngFor="let shape of shapes | async">
-  <tr *ngFor="let row of shape">
-    <td *ngFor="let cell of row">
-      <div class="cell" [ngStyle]="cellStyle()" *ngIf="cell"></div><div class="cell dead" *ngIf="!cell"></div>
-    </td>
-  </tr>
-</table>
+<div (click)="selectShape(shape)" [class]="shapeClass(shape)" *ngFor="let shape of shapes | async">
+  <table>
+    <tr *ngFor="let row of shape">
+      <td *ngFor="let shapeCell of row">
+        <div class="cell" [ngStyle]="cellStyle(shapeCell)"></div>
+      </td>
+    </tr>
+  </table>
+</div>
 
 <table>
   <tr>

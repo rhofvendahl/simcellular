@@ -29,8 +29,8 @@ export class LibraryComponent implements OnInit {
   }
 
   shapeClass(shape) {
-    if (shape.$key == this.selectedShapeKey) return "selected";
-    return "";
+    if (shape.$key == this.selectedShapeKey) return "shape selected";
+    return "shape";
   }
 
   selectShape(shape) {
@@ -45,5 +45,9 @@ export class LibraryComponent implements OnInit {
 
   cellStyle() {
     return {"background-color": this.selectedColor}
+  }
+  cellStyle(shapeCell) {
+    if (shapeCell) return {"background-color": this.selectedColor};
+    return {};
   }
 }
