@@ -38,6 +38,29 @@ export class Game {
     return neighbors;
   }
 
+  averageColor(cells: Cell[]) {
+    let redDecimalSum: number = 0;
+    let greenDecimalSum: number = 0;
+    let blueDecimalSum: number = 0;
+
+    cells.forEach(function(cell) {
+      debugger
+      let redHex: string = cell.color.substr(1, 2);
+      redDecimalSum += parseInt(redHex, 16);
+      let greenHex: string = cell.color.substr(3, 2);
+      redDecimalSum += parseInt(greenHex, 16);
+      let blueHex: string = cell.color.substr(5, 2);
+      redDecimalSum += parseInt(blueHex, 16);
+    });
+
+    let redHexAverage: string = (redDecimalSum / 3).toString(16);
+    let greenHexAverage: string = (redDecimalSum / 3).toString(16);
+    let blueHexAverage: string = (redDecimalSum / 3).toString(16);
+
+    console.log(cells[0].color, cells[1].color, cells[2].color, redHexAverage, greenHexAverage, blueHexAverage)
+    return "#" + redHexAverage + greenHexAverage + blueHexAverage;
+  }
+
   updateBoard() {
     for (let row = 0; row < this.board.length; row++) {
       for (let col = 0; col < this.board[0].length; col++) {
@@ -52,7 +75,7 @@ export class Game {
           cell.nextState = shouldSurvive;
         } else if (shouldGenerate) {
           cell.nextState = true;
-          let color: string = liveNeighbors[Math.floor(Math.random()*liveNeighbors.length)].color;
+          let color: string = this.averageColor(liveNeighbors);//liveNeighbors[Math.floor(Math.random()*liveNeighbors.length)].color;
           cell.color = color;
         }
       }
