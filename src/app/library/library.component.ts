@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, Input, EventEmitter } from '@angular/core';
 import { ShapesService } from '../shapes.service';
 import { FirebaseListObservable } from 'angularfire2/database';
 import { NgStyle } from '@angular/common';
@@ -13,11 +13,10 @@ import { Colors } from '../models/colors'
 export class LibraryComponent implements OnInit {
   @Output() shapeSender = new EventEmitter();
   @Output() colorSender = new EventEmitter();
+  @Input() childColors: Colors;
 
   shapes: FirebaseListObservable<any[]>;
   selectedShapeKey: number = 0;
-  // selectedColor = {'background-color':'#777777'};
-  selectedColor: string = '#00bfff';
 
 
   constructor(private shapesService: ShapesService) { }
@@ -39,16 +38,17 @@ export class LibraryComponent implements OnInit {
     this.shapeSender.emit(shape);
   }
 
-  selectColor(color) {
-    this.selectedColor = color;
-    this.colorSender.emit(color);
+  selectColor(selectedColor) {
+    console.log(selectedColor)
+    this.colorSender.emit(selectedColor);
   }
 
-  cellStyle() {
-    return {"background-color": this.selectedColor}
-  }
   cellStyle(shapeCell) {
-    if (shapeCell) return {"background-color": this.selectedColor};
+    if (shapeCell) return {"background-color": this.childColors.selected};
     return {};
+  }
+
+  colorStyle(color) {
+    return {"background-color": this.childColors[color]}
   }
 }

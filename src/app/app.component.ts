@@ -9,14 +9,14 @@ import { Colors } from './models/colors'
 export class AppComponent {
   //change if I figure out how to unwrap single object
   selectedShapeParent: boolean[][] = [[true]];
-  colors: Colors = new Colors;
-  selectedColorParent: string = this.colors.blue;
+  colors: Colors = new Colors("green");
+  // selectedColorParent: string = this.colors.blue;
 
   recieveShape($event) {
     //try retreiving property of event
     this.selectedShapeParent = $event;
   }
   recieveColor($event) {
-    this.selectedColorParent = $event;
+    this.colors.selected = this.colors[$event];
   }
 }

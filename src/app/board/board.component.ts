@@ -16,7 +16,7 @@ import { Colors } from '../models/colors'
 
 export class BoardComponent implements OnInit {
   @Input() selectedShape: boolean[][];
-  @Input() selectedColor: string;
+  @Input() childColors: Colors;
 
   game: Game = new Game(30, 30);
   animationInterval;
@@ -37,7 +37,7 @@ export class BoardComponent implements OnInit {
     if (this.selectedShape.length == 1 && cell.state) {
       cell.state = false;
     } else {
-      this.game.placeShape(cell, this.selectedShape, this.selectedColor);
+      this.game.placeShape(cell, this.selectedShape, this.childColors.selected);
     }
   }
 

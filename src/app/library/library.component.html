@@ -13,13 +13,13 @@
   <table>
     <tr>
       <!-- green blue -->
-      <td><div class="cell" (click)="selectColor('#32cd32')" [ngStyle]="{'background-color':'#32cd32'}"></div></td>
-      <td><div class="cell" (click)="selectColor('#00bfff')" [ngStyle]="{'background-color':'#00bfff'}"></div></td>
+      <td><div class="cell" (click)="selectColor('green')" [ngStyle]="colorStyle('green')"></div></td>
+      <td><div class="cell" (click)="selectColor('blue')" [ngStyle]="colorStyle('blue')"></div></td>
     </tr>
     <tr>
       <!-- red yellow -->
-      <td><div class="cell" (click)="selectColor('#ff6347')" [ngStyle]="{'background-color':'#ff6347'}"></div></td>
-      <td><div class="cell" (click)="selectColor('#f5e344')" [ngStyle]="{'background-color':'#f5e344'}"></div></td>
+      <td><div class="cell" (click)="selectColor('red')" [ngStyle]="colorStyle('red')"></div></td>
+      <td><div class="cell" (click)="selectColor('yellow')" [ngStyle]="colorStyle('yellow')"></div></td>
     </tr>
   </table>
 </div>
