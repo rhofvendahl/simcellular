@@ -22,7 +22,7 @@ export class BoardComponent implements OnInit {
 
   constructor(private shapesService: ShapesService) {
     this.playState = false;
-    this.game = new Game(40, 40);
+    this.game = new Game(30, 30);
     // this.shapeSelected = [];
     // this.library = new Library();
   }

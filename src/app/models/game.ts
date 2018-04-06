@@ -81,8 +81,12 @@ export class Game {
           cell.nextState = shouldSurvive;
         } else if (shouldGenerate) {
           cell.nextState = true;
-          let color: string = this.averageColor(liveNeighbors);//liveNeighbors[Math.floor(Math.random()*liveNeighbors.length)].color;
-          cell.color = color;
+          
+          if (Math.random() < .75) {
+            cell.color = liveNeighbors[Math.floor(Math.random()*liveNeighbors.length)].color;
+          } else {
+            cell.color = this.averageColor(liveNeighbors);
+          }
         }
       }
     }
