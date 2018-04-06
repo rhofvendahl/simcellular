@@ -4,6 +4,8 @@ import { Game } from '../models/game'
 import { Library } from '../models/library'
 import { ShapesService } from '../shapes.service';
 import { FirebaseListObservable } from 'angularfire2/database';
+import { Colors } from '../models/colors'
+
 
 @Component({
   selector: 'app-board',
@@ -16,15 +18,10 @@ export class BoardComponent implements OnInit {
   @Input() selectedShape: boolean[][];
   @Input() selectedColor: string;
 
-  game: Game;
-  playState: boolean;
+  game: Game = new Game(30, 30);
   animationInterval;
 
   constructor(private shapesService: ShapesService) {
-    this.playState = false;
-    this.game = new Game(30, 30);
-    // this.shapeSelected = [];
-    // this.library = new Library();
   }
 
   ngOnInit() {

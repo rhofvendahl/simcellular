@@ -9,7 +9,7 @@
   <div id="title">simcellular</div>
   <app-board [selectedShape]="selectedShapeParent" [selectedColor]="selectedColorParent"></app-board>
   <div id="library">
-    <app-library (shapeSender)="shapeReciever($event)" (colorSender)="colorReciever($event)"></app-library>
+    <app-library (shapeSender)="recieveShape($event)" (colorSender)="recieveColor($event)"></app-library>
   </div>
   <div id="about">about</div>
 </div>

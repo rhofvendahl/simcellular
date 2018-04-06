@@ -2,6 +2,7 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { ShapesService } from '../shapes.service';
 import { FirebaseListObservable } from 'angularfire2/database';
 import { NgStyle } from '@angular/common';
+import { Colors } from '../models/colors'
 
 @Component({
   selector: 'app-library',

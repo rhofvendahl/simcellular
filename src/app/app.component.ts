@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Colors } from './models/colors'
 
 @Component({
   selector: 'app-root',
@@ -8,12 +9,14 @@ import { Component } from '@angular/core';
 export class AppComponent {
   //change if I figure out how to unwrap single object
   selectedShapeParent: boolean[][] = [[true]];
-  selectedColorParent: string = "#00bfff";
-  shapeReciever($event) {
+  colors: Colors = new Colors;
+  selectedColorParent: string = this.colors.blue;
+
+  recieveShape($event) {
     //try retreiving property of event
     this.selectedShapeParent = $event;
   }
-  colorReciever($event) {
+  recieveColor($event) {
     this.selectedColorParent = $event;
   }
 }
