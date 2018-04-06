@@ -23,8 +23,8 @@ export class BoardComponent implements OnInit {
   constructor(private shapesService: ShapesService) {
     this.playState = false;
     this.game = new Game(40, 40);
-    this.shapeSelected = [];
-    this.library = new Library();
+    // this.shapeSelected = [];
+    // this.library = new Library();
   }
 
   ngOnInit() {
