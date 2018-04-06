@@ -53,6 +53,29 @@ export class BoardComponent implements OnInit {
     }
   }
 
+  pause() {
+    clearInterval(this.animationInterval);
+  }
+
+  stepForward() {
+    this.game.updateBoard();
+  }
+
+  play() {
+    clearInterval(this.animationInterval);
+    this.animationInterval = setInterval(() => {this.game.updateBoard()}, 160);
+  }
+
+  fastForward() {
+    clearInterval(this.animationInterval);
+    this.animationInterval = setInterval(() => {this.game.updateBoard()}, 40);
+  }
+
+  clear() {
+    clearInterval(this.animationInterval);
+    this.game.clearBoard();
+  }
+
   togglePlayButton() {
     if (this.playState) {
       return "Pause";

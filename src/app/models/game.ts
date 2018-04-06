@@ -81,7 +81,7 @@ export class Game {
           cell.nextState = shouldSurvive;
         } else if (shouldGenerate) {
           cell.nextState = true;
-          
+
           if (Math.random() < .75) {
             cell.color = liveNeighbors[Math.floor(Math.random()*liveNeighbors.length)].color;
           } else {
@@ -95,6 +95,15 @@ export class Game {
       for (let col = 0; col < this.board[0].length; col++) {
         let cell = this.board[row][col];
         cell.state = cell.nextState;
+      }
+    }
+  }
+
+  clearBoard() {
+    for (let row = 0; row < this.board.length; row++) {
+      for (let col = 0; col < this.board[0].length; col++) {
+        let cell = this.board[row][col];
+        cell.state = false;
       }
     }
   }
