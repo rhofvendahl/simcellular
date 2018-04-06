@@ -3,10 +3,23 @@
   width: 600px;
   height: 600px;
   margin: auto;
+  margin-top: 10%;
 }
 
 #library {
   position: absolute;
   top: -4px;
   right: 605px;
+}
+#title {
+  position: relative;
+  float: right;
+  color: grey;
+  font-size: 50px;
+  bottom: 65px;
+}
+#about {
+  color: grey;
+  font-size: 40px;
+  margin-top: -10px;
 }

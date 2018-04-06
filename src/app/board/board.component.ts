@@ -63,12 +63,12 @@ export class BoardComponent implements OnInit {
 
   play() {
     clearInterval(this.animationInterval);
-    this.animationInterval = setInterval(() => {this.game.updateBoard()}, 160);
+    this.animationInterval = setInterval(() => {this.game.updateBoard()}, 300);
   }
 
   fastForward() {
     clearInterval(this.animationInterval);
-    this.animationInterval = setInterval(() => {this.game.updateBoard()}, 40);
+    this.animationInterval = setInterval(() => {this.game.updateBoard()}, 75);
   }
 
   clear() {
