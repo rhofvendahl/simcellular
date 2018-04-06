@@ -27,17 +27,6 @@ export class Game {
     return this.board[inRangeRow][inRangeCol];
   }
 
-  // tallyNeighbors(cellRow: number, cellCol: number) {
-  //   let neighborTally: number = 0;
-  //   for (let row = cellRow-1; row <= cellRow+1; row++) {
-  //     for (let col = cellCol-1; col <= cellCol+1; col++) {
-  //       let inRangeCell: Cell = this.inRangeCell(row, col);
-  //       if (inRangeCell.state) neighborTally++;
-  //     }
-  //   }
-  //   if (this.board[cellRow][cellCol].state) neighborTally--;
-  //   return neighborTally;
-  // }
   getNeighbors(cell: Cell) {
     let neighbors: Cell[] = [];
     for (let row = cell.row-1; row <= cell.row+1; row++) {
@@ -76,11 +65,6 @@ export class Game {
       }
     }
   }
-
-  // renderNextState() {
-  //
-  // }
-
 
   placeShape(insertCell: Cell, shape: boolean[][], color: string) {
     for (let shapeRow = 0; shapeRow < shape.length; shapeRow++) {

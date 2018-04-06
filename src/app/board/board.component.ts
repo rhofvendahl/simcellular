@@ -22,7 +22,7 @@ export class BoardComponent implements OnInit {
 
   constructor(private shapesService: ShapesService) {
     this.playState = false;
-    this.game = new Game(20, 20);
+    this.game = new Game(40, 40);
     this.shapeSelected = [];
     this.library = new Library();
   }
@@ -57,7 +57,7 @@ export class BoardComponent implements OnInit {
   togglePlay() {
     this.playState = !this.playState;
     if (this.playState) {
-      this.animationInterval = setInterval(() => {this.game.updateBoard()}, 50);
+      this.animationInterval = setInterval(() => {this.game.updateBoard()}, 100);
     } else {
       clearInterval(this.animationInterval);
     }
