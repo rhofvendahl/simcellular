@@ -80,7 +80,7 @@ export class Game {
         } else if (shouldGenerate) {
           cell.nextState = true;
 
-          if (Math.random() < .75) {
+          if (Math.random() < .8) {
             cell.color = liveNeighbors[Math.floor(Math.random()*liveNeighbors.length)].color;
           } else {
             cell.color = this.averageColor(liveNeighbors);
@@ -112,6 +112,7 @@ export class Game {
       for (let col = 0; col < this.board[0].length; col++) {
         let cell = this.board[row][col];
         cell.state = false;
+        cell.nextState = false;
       }
     }
   }

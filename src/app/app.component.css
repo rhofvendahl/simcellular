@@ -12,11 +12,12 @@
   right: 605px;
 }
 #title {
-  position: relative;
+  position: absolute;
   float: right;
   color: grey;
   font-size: 60px;
-  bottom: 75px;
+  right: 0px;
+  top: -75px;
   font-family: 'Open Sans Condensed', sans-serif;
 }
 #about {

@@ -46,6 +46,7 @@ export class BoardComponent implements OnInit {
   }
 
   stepForward() {
+    clearInterval(this.animationInterval);
     this.game.update();
   }
 

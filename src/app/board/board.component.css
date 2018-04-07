@@ -25,3 +25,7 @@ table {
   color: grey;
   margin-top: 7px;
 }
+
+#controls * {
+  margin-right: 15px;
+}
