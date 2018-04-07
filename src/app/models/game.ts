@@ -65,7 +65,7 @@ export class Game {
     return color;
   }
 
-  updateBoard() {
+  update() {
     for (let row = 0; row < this.board.length; row++) {
       for (let col = 0; col < this.board[0].length; col++) {
         let cell: Cell = this.board[row][col];
@@ -97,7 +97,17 @@ export class Game {
     }
   }
 
-  clearBoard() {
+  insert(insertCell: Cell, shape: boolean[][], color: string) {
+    for (let shapeRow = 0; shapeRow < shape.length; shapeRow++) {
+      for (let shapeCol = 0; shapeCol < shape[0].length; shapeCol++) {
+        let cell = this.inRangeCell(shapeRow + insertCell.row, shapeCol + insertCell.column)
+        cell.state = shape[shapeRow][shapeCol];
+        cell.color = color;
+      }
+    }
+  }
+
+  clear() {
     for (let row = 0; row < this.board.length; row++) {
       for (let col = 0; col < this.board[0].length; col++) {
         let cell = this.board[row][col];
@@ -106,12 +116,12 @@ export class Game {
     }
   }
 
-  placeShape(insertCell: Cell, shape: boolean[][], color: string) {
-    for (let shapeRow = 0; shapeRow < shape.length; shapeRow++) {
-      for (let shapeCol = 0; shapeCol < shape[0].length; shapeCol++) {
-        let cell = this.inRangeCell(shapeRow + insertCell.row, shapeCol + insertCell.column)
-        cell.state = shape[shapeRow][shapeCol];
-        cell.color = color;
+  random(colorArray: string[]) {
+    for (let row = 0; row < this.board.length; row++) {
+      for (let col = 0; col < this.board[0].length; col++) {
+        let cell = this.board[row][col];
+        cell.state = (Math.random() < .2);
+        cell.color = colorArray[Math.floor(Math.random()*colorArray.length)];
       }
     }
   }

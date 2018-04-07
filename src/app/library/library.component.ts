@@ -2,7 +2,7 @@ import { Component, OnInit, Output, Input, EventEmitter } from '@angular/core';
 import { ShapesService } from '../shapes.service';
 import { FirebaseListObservable } from 'angularfire2/database';
 import { NgStyle } from '@angular/common';
-import { Colors } from '../models/colors'
+import { ColorBag } from '../models/color-bag'
 
 @Component({
   selector: 'app-library',
@@ -13,7 +13,7 @@ import { Colors } from '../models/colors'
 export class LibraryComponent implements OnInit {
   @Output() shapeSender = new EventEmitter();
   @Output() colorSender = new EventEmitter();
-  @Input() childColors: Colors;
+  @Input() childColorBag: ColorBag;
 
   shapes: FirebaseListObservable<any[]>;
   selectedShapeKey: number = 0;
@@ -44,11 +44,11 @@ export class LibraryComponent implements OnInit {
   }
 
   cellStyle(shapeCell) {
-    if (shapeCell) return {"background-color": this.childColors.selected};
+    if (shapeCell) return {"background-color": this.childColorBag.selected};
     return {};
   }
 
   colorStyle(color) {
-    return {"background-color": this.childColors[color]}
+    return {"background-color": this.childColorBag[color]}
   }
 }

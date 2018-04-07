@@ -1,4 +1,4 @@
-export class Colors {
+export class ColorBag {
   red: string = "#ff6347";
   green: string = "#32cd32";
   blue: string = "#00bfff";

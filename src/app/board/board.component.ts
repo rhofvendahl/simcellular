@@ -4,7 +4,7 @@ import { Game } from '../models/game'
 import { Library } from '../models/library'
 import { ShapesService } from '../shapes.service';
 import { FirebaseListObservable } from 'angularfire2/database';
-import { Colors } from '../models/colors'
+import { ColorBag } from '../models/color-bag'
 
 
 @Component({
@@ -16,7 +16,7 @@ import { Colors } from '../models/colors'
 
 export class BoardComponent implements OnInit {
   @Input() selectedShape: boolean[][];
-  @Input() childColors: Colors;
+  @Input() childColorBag: ColorBag;
 
   game: Game = new Game(30, 30);
   animationInterval;
@@ -37,16 +37,7 @@ export class BoardComponent implements OnInit {
     if (this.selectedShape.length == 1 && cell.state) {
       cell.state = false;
     } else {
-      this.game.placeShape(cell, this.selectedShape, this.childColors.selected);
-    }
-  }
-
-  togglePlay() {
-    this.playState = !this.playState;
-    if (this.playState) {
-      this.animationInterval = setInterval(() => {this.game.updateBoard()}, 100);
-    } else {
-      clearInterval(this.animationInterval);
+      this.game.insert(cell, this.selectedShape, this.childColorBag.selected);
     }
   }
 
@@ -55,34 +46,26 @@ export class BoardComponent implements OnInit {
   }
 
   stepForward() {
-    this.game.updateBoard();
+    this.game.update();
   }
 
   play() {
     clearInterval(this.animationInterval);
-    this.animationInterval = setInterval(() => {this.game.updateBoard()}, 150);
+    this.animationInterval = setInterval(() => {this.game.update()}, 150);
   }
 
   fastForward() {
     clearInterval(this.animationInterval);
-    this.animationInterval = setInterval(() => {this.game.updateBoard()}, 50);
+    this.animationInterval = setInterval(() => {this.game.update()}, 50);
   }
 
   clear() {
     clearInterval(this.animationInterval);
-    this.game.clearBoard();
+    this.game.clear();
   }
 
-  togglePlayButton() {
-    if (this.playState) {
-      return "Pause";
-    } else {
-      return "Play";
-    }
-  }
-
-  nextState() {
-    this.game.updateBoard();
-    // this.game.renderNextState();
+  random() {
+    clearInterval(this.animationInterval);
+    this.game.random();
   }
 }

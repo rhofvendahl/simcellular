@@ -7,9 +7,9 @@
 </div> -->
 <div id="board">
   <div id="title">simcellular</div>
-  <app-board [selectedShape]="selectedShapeParent" [childColors]="colors"></app-board>
+  <app-board [selectedShape]="selectedShapeParent" [childColorBag]="colorBag"></app-board>
   <div id="library">
-    <app-library (shapeSender)="recieveShape($event)" (colorSender)="recieveColor($event)" [childColors]="colors"></app-library>
+    <app-library (shapeSender)="recieveShape($event)" (colorSender)="recieveColor($event)" [childColorBag]="colorBag"></app-library>
   </div>
   <div id="about">about</div>
 </div>
