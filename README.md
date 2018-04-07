@@ -10,6 +10,9 @@ An implementation of Conway's Game of Life, a cellular automaton in which each s
 
 ## Setup/Installation Requirements
 
+To view:
+https://sheltered-shore-68301.herokuapp.com/
+
 To set up repository:
 ```
 git clone https://github.com/rhofvendahl/webpack-heroku-template
