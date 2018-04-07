@@ -25,7 +25,7 @@ export class BoardComponent implements OnInit {
   }
 
   ngOnInit() {
-    console.log(this.shapesService.getShapeByKey(0));
+    this.random();
   }
 
   cellStyle(cell) {
