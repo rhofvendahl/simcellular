@@ -65,7 +65,12 @@ export class BoardComponent implements OnInit {
   }
 
   random() {
-    clearInterval(this.animationInterval);
-    this.game.random();
+    let colorArray: string[] = [
+      this.childColorBag.red,
+      this.childColorBag.green,
+      this.childColorBag.blue,
+      this.childColorBag.yellow
+    ];
+    this.game.random(colorArray);
   }
 }
