@@ -9,6 +9,7 @@
     "express": "npm run build; node server.js",
     "test": "ng test",
     "lint": "ng lint",
+    "fix": "ng lint --fix",
     "e2e": "ng e2e"
   },
   "private": true,

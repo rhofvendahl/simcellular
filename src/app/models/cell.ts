@@ -1,5 +1,5 @@
 export class Cell {
-  state: boolean = false;
+  state = false;
   nextState: boolean;
   // row: number;
   // column: number;

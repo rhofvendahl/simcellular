@@ -1,10 +1,10 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Cell } from '../models/cell'
-import { Game } from '../models/game'
-import { Library } from '../models/library'
+import { Cell } from '../models/cell';
+import { Game } from '../models/game';
+import { Library } from '../models/library';
 import { ShapesService } from '../shapes.service';
 import { FirebaseListObservable } from 'angularfire2/database';
-import { ColorBag } from '../models/color-bag'
+import { ColorBag } from '../models/color-bag';
 
 
 @Component({
@@ -29,12 +29,12 @@ export class BoardComponent implements OnInit {
   }
 
   cellStyle(cell) {
-    if (cell.state) return {"background-color": cell.color};
+    if (cell.state) { return {'background-color': cell.color}; }
     return {};
   }
 
   clickCell(cell) {
-    if (this.selectedShape.length == 1 && cell.state) {
+    if (this.selectedShape.length === 1 && cell.state) {
       cell.state = false;
     } else {
       this.game.insert(cell, this.selectedShape, this.childColorBag.selected);
@@ -52,12 +52,12 @@ export class BoardComponent implements OnInit {
 
   play() {
     clearInterval(this.animationInterval);
-    this.animationInterval = setInterval(() => {this.game.update()}, 150);
+    this.animationInterval = setInterval(() => {this.game.update(); }, 150);
   }
 
   fastForward() {
     clearInterval(this.animationInterval);
-    this.animationInterval = setInterval(() => {this.game.update()}, 50);
+    this.animationInterval = setInterval(() => {this.game.update(); }, 50);
   }
 
   clear() {
@@ -66,7 +66,7 @@ export class BoardComponent implements OnInit {
   }
 
   random() {
-    let colorArray: string[] = [
+    const colorArray: string[] = [
       this.childColorBag.red,
       this.childColorBag.green,
       this.childColorBag.blue,
