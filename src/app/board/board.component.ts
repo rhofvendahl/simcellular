@@ -26,6 +26,7 @@ export class BoardComponent implements OnInit {
 
   ngOnInit() {
     this.random();
+    this.play();
   }
 
   cellStyle(cell) {
